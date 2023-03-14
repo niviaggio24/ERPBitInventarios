@@ -1,0 +1,54 @@
+<div class="col-12 d-flex justify-content-between py-4">
+    <p class="h1">listado de productos</p>
+    <button class="btn btn-primary" routerLink="/crear-producto"><b>crear producto</b></button>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">Modelo</th>
+        <th scope="col" class="text-center">Fabricante</th>
+        <th scope="col" class="text-center">Precio</th>
+        <th scope="col" class="text-center">Imagen</th>
+        <th scope="col" class="text-center">Responsable</th>
+        <th scope="col" class="text-center">Estado</th>
+        <th scope="col" class="text-center">Stock</th>
+        <th scope="col" class="text-center">Cédula</th>
+        <th class="text-center">Acciones</th>
+
+      </tr>
+    </thead>
+    <tbody>
+       <tr class="text-center" *ngFor="let producto of listaProductos">
+        <td>
+          <p class="px-3">{{ producto.modelo }}</p>
+        </td>
+        <td>
+          <p class="px-3">{{ producto.fabricante }}</p>
+        </td>
+        <td>{{ producto.precio | currency: '$ ' }}</td>
+        <td>
+          <img src="{{producto.rutaImg}}" class="w-50" alt="">
+        </td>
+        <td>
+          <p class="px-3">{{ producto.asignadoA }}</p>
+        </td>
+        <td>
+          <p class="px-3">{{ producto.estado }}</p>
+        </td>
+        <td>
+          <p class="px-3">{{ producto.tock }}</p>
+        </td>
+        <td>
+          <p class="px-3">{{ producto.cedula }}</p>
+        </td>
+        <td class="d-flex g-2">
+            <button class="btn btn-info mx-3" [routerLink]="['/editar-producto', producto._id]">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button class="btn btn-danger mx-3" (click)="eliminarProducto(producto._id)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

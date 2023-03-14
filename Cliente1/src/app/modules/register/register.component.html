@@ -1,0 +1,76 @@
+<div class="card card-outline card-success">
+  <div class="card-header text-center">
+    <a [routerLink]="['/']" class="h1"><b>Inventory</b>BIT</a><img src="assets/img/logo1.png">
+  </div>
+  <div class="card-body">
+    <p class="login-box-msg">Cree una cuenta</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="registerByAuth()">
+      <div class="input-group mb-3">
+        <input formControlName="email" type="email" class="form-control" placeholder="Email de usuario" />
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-envelope"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <input formControlName="password" type="password" class="form-control" placeholder="ingrese una contraseña" />
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-lock"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <input formControlName="retypePassword" type="password" class="form-control"
+          placeholder="Confirme su contraseña" />
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-lock"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-7">
+          <div class="icheck-primary">
+            <input type="checkbox" id="agreeTerms" name="terms" value="agree" />
+            <label for="agreeTerms">
+              Acepto los <a href="#">terminos y condiciones</a>
+            </label>
+          </div>
+        </div>
+
+        <!-- /.col -->
+        <div class="col-5">
+          <pf-button [type]="'submit'" [block]="true" theme="dark" [loading]="isAuthLoading"
+            [disabled]="isFacebookLoading || isGoogleLoading">
+            Registrar
+          </pf-button>
+        </div>
+
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <pf-button class="mb-2" [block]="true" [loading]="isFacebookLoading" [disabled]="isAuthLoading || isGoogleLoading"
+        (click)="registerByFacebook()" theme="dark">
+        <i class="fab fa-facebook mr-2"></i>
+        Registrese usando Facebook
+      </pf-button>
+
+      <pf-button [block]="true" [loading]="isGoogleLoading" [disabled]="isAuthLoading || isFacebookLoading"
+        (click)="registerByGoogle()" theme="dark">
+        <i class="fab fa-google mr-2"></i>
+        Registrese usando Google+
+      </pf-button>
+    </div>
+
+    <a [routerLink]="['/login']" class="text-center">
+      Ya tengo una cuenta</a>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<div class="container justify-content-center align-content-center">
+    <h1 class="mb-5">Crear asignación</h1>
+    <div class="">
+        <section class="content w-50">
+            <!-- Default box vvvvvv -->
+            <form [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+
+
+
+
+                <div class="form-floating">
+                    <input type="text" class="form-control mb-4" id="modelo" formControlName="modelo" placeholder="modelo">
+                    <span *ngIf="productoForm.get('modelo')?.hasError('required') && productoForm.get('modelo')?.touched" class="text-danger fw-bold">Indigue el modelo del equipo</span>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" class="form-control mb-4" id="fabricante" formControlName="fabricante" placeholder="fabricante">
+
+                    <span *ngIf="productoForm.get('fabricante')?.hasError('required') && productoForm.get('fabricante')?.touched" class="text-danger fw-bold">Indigue el fabricante del equipo</span>
+                </div>
+
+                <div class="form-floating">
+                    <input type="number" class="form-control mb-4" id="precio" formControlName="precio" placeholder="Ingrese el valor del equipo">
+
+                    <span *ngIf="productoForm.get('precio')?.hasError('required') && productoForm.get('precio')?.touched" class="text-danger fw-bold">Indique el valor del equipo</span>
+                </div>
+
+                <div class="form-floating">
+                    <input type="file" class="form-control" id="imagen" formControlName="rutaImg" placeholder="inserte url">
+                    <label for="imagen">Imagen del Producto</label>
+                    <span *ngIf="productoForm.get('imagen')?.hasError('required') && productoForm.get('imagen')?.touched" class="text-danger fw-bold">Seleccione la imagen del equipo</span>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="asignadoA" formControlName="asignadoA" placeholder="Indique a quien será asignado el equipo">
+                    <label for="asignado_a"></label>
+                    <span *ngIf="productoForm.get('asignadoA')?.hasError('required') && productoForm.get('asignadoA')?.touched" class="text-danger fw-bold">Indique a quién asignará el equipo</span>
+                </div>
+
+                <div class="form-floating">
+                    <label for="estado">Estado del equipo</label>
+                    <select class="form-select" id="estado" formControlName="estado" aria-label="Floating label select example">
+                      <option selected>Seleccione una opción...</option>
+                      <option value="1">Activo</option>
+                      <option value="2">Inactivo</option>
+                    </select>
+                    <span *ngIf="productoForm.get('estado')?.hasError('required') && productoForm.get('estado')?.touched" class="text-danger fw-bold">Indique el estado del equipo</span>
+
+                  </div><br>
+
+
+                <div class="form-floating">
+                    <input type="text" class="form-control mb-4" formControlName="tock" id="tock" placeholder="Tock">
+                     <span *ngIf="productoForm.get('tock')?.hasError('required') && productoForm.get('tock')?.touched" class="text-danger fw-bold">Indique número de tock</span>
+                </div>
+
+                <div class="">
+                    <input type="number" class="form-control" class="cedula" id="cedula" formControlName="cedula" placeholder="cedula">
+
+                    <span *ngIf="productoForm.get('numeroDocumento')?.hasError('required') && productoForm.get('numeroDocumento')?.touched" class="text-danger fw-bold">Indique el número de cédula</span>
+                </div>
+
+                <div class="col-12 my-5 d-flex justify-content-center aling-items-center">
+                    <button [disabled]="productoForm.invalid"class="btn btn-dark" type="submit">Crear producto</button>
+                  </div>
+
+            </form>
+
+        </section>
+    </div>
+</div>
